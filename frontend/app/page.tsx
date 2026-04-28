@@ -44,7 +44,7 @@ export default function Home() {
     setHasSearched(true);
 
     try {
-      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/recommend`, {
+      const response = await fetch('/api/recommend', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

@@ -34,7 +34,7 @@ export default function PreferenceForm({ onSearch, isLoading }: PreferenceFormPr
 
   const loadLocalities = async () => {
     try {
-      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/localities`);
+      const response = await fetch('/api/localities');
       if (response.ok) {
         const data = await response.json();
         setLocalities(data.localities || []);
