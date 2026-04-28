@@ -1,7 +1,8 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { MapPin, DollarSign, UtensilsCrossed, Star, SlidersHorizontal, List } from 'lucide-react';
+import localitiesData from '@/data/localities.json';
 
 interface PreferenceFormProps {
   onSearch: (preferences: Preferences) => void;
@@ -17,8 +18,9 @@ interface Preferences {
   top_n: string;
 }
 
+const localities: string[] = localitiesData as string[];
+
 export default function PreferenceForm({ onSearch, isLoading }: PreferenceFormProps) {
-  const [localities, setLocalities] = useState<string[]>([]);
   const [preferences, setPreferences] = useState<Preferences>({
     location: '',
     budget: '',
@@ -27,22 +29,6 @@ export default function PreferenceForm({ onSearch, isLoading }: PreferenceFormPr
     additional_preferences: '',
     top_n: '5',
   });
-
-  useEffect(() => {
-    loadLocalities();
-  }, []);
-
-  const loadLocalities = async () => {
-    try {
-      const response = await fetch('/api/localities');
-      if (response.ok) {
-        const data = await response.json();
-        setLocalities(data.localities || []);
-      }
-    } catch (error) {
-      console.error('Failed to load localities:', error);
-    }
-  };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
