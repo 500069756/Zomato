@@ -30,7 +30,8 @@
   - `POST /api/recommend`
 
 ## Update Frontend:
-After deployment, update your frontend `.env`:
+After deployment, set this in Vercel → Project → Settings → Environment Variables:
 ```
-NEXT_PUBLIC_API_URL=https://zomato-ai-backend.onrender.com
+BACKEND_URL=https://zomato-ai-backend.onrender.com
 ```
+(Server-side only; not exposed to the browser. The Vercel `/api/recommend` route proxies to it.)

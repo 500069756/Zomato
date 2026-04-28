@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: zomato-ai-backend
+    runtime: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn --bind 0.0.0.0:$PORT --workers 2 --timeout 120 src.phase5.app:app
+    healthCheckPath: /api/health
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.0
+      - key: FLASK_DEBUG
+        value: "false"
+      - key: GROQ_API_KEY
+        sync: false
