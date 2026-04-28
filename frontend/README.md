@@ -2,6 +2,13 @@
 
 A modern, beautiful frontend for the Zomato AI Restaurant Recommendation System built with Next.js, Tailwind CSS, and Framer Motion.
 
+## 🌐 Live Deployment
+
+- **Frontend**: deployed on Vercel (proxies `/api/recommend` to the backend)
+- **Backend**: https://zomato-2-9s48.onrender.com (Flask + gunicorn on Render)
+
+The frontend reads `BACKEND_URL` from the Vercel environment to forward requests; set it to the URL above. The backend is on Render's free tier and may cold-start (~30–60s) after periods of inactivity.
+
 ## ✨ Features
 
 - **Modern UI/UX**: Clean, responsive design with Zomato's signature red branding
